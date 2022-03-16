@@ -4,7 +4,7 @@ function renderHeaderNav() {
       <li class="material-icons sign-up-icon" onClick="render('signUp')">person_add</li>
       <li class="material-icons login-icon" onClick="render('login')">login</li>
     </ul>
-    <form onSubmit="render('movieList')"> 
+    <form onSubmit="renderMovieList(event)"> 
       <fieldset>
         <label>movie title:</label>
         <input id="search" type='text' name='movie-title'>
