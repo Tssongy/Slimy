@@ -30,5 +30,5 @@ function login(event) {
       let errorDOM = document.querySelector('.log-in .error')
       errorDOM.textContent = error.response.data.message
     })
-  renderMovieList()
+  renderSearchBar()
 }
