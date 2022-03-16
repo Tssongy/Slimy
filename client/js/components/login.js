@@ -19,14 +19,16 @@ function renderLogin () {
 }
 
 function login(event) {
-  event.preventDefualt()
-  const form = event.text
-  const data = object.fromEntries(new FormData(form))
+  event.preventDefault()
+  const form = event.target
+  const data = Object.fromEntries(new FormData(form))
   axios
     .post('/api/sessions', data)
     .then(res => res.data)
+    .then(userName => console.log(userName))
     .catch(error => {
-      let errorDom = document.querySelector('.log-in .error')
-      errorDom.textContent = error.response.data.message
+      let errorDOM = document.querySelector('.log-in .error')
+      errorDOM.textContent = error.response.data.message
     })
+  renderMovieList()
 }
