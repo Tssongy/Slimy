@@ -1,7 +1,7 @@
 function renderSignUp () {
   document.querySelector('#page').innerHTML = `
   <section class ="sign-up">
-    <form action="" onSubmit='signUp(event)">
+    <form action="" onSubmit="signUp(event)">
       <h2> Sign up:</h2>
       <fieldset>
         <label for=""> Name:</label>
