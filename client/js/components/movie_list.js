@@ -6,7 +6,8 @@ function renderMovieList() {
       const movieList = res.data.Search.map((movie) => {
         const title = movie.Title;
         const posterUrl = movie.Poster;
-        const imdbId = movie.imdbId;
+        const imdbId = movie.imdbID;
+        console.log(imdbId);
         return `
               <div>
               <h6>${title}</h6>
