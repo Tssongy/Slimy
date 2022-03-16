@@ -15,6 +15,9 @@ function renderSignUp () {
         <label for="">Password:</label>
         <input type="password" name="password">
       </fieldset>   
+      <button>Sign Up</button>
+      </form>
+    </section>
   `
 }
 
@@ -23,7 +26,7 @@ function signUp(event) {
   const form = event.target
   const data = Object.fromEntries(new FormData(form))
   axios
-    .post('/api/users', data)
+    .post('/users', data)
     .then(res => res.data)
     .then(userName => console.log(userName))
 }
