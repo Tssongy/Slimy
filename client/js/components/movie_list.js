@@ -1,5 +1,4 @@
-function renderMovieList(event) {
-  event.preventDefault();
+function renderMovieList() { 
   const movieTitle = document.querySelector("#search").value;
   axios
     .get(`https://omdbapi.com?apikey=2f6435d9&s=${movieTitle}`)
