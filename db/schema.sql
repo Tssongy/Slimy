@@ -24,3 +24,4 @@ CREATE TABLE reviews(
     review TEXT
 );
 
+

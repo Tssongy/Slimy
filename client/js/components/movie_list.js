@@ -1,5 +1,5 @@
-function renderSearchBar(){
-  document.querySelector('#page').innerHTML = `
+function renderSearchBar() {
+  document.querySelector("#page").innerHTML = `
   <section class='search'>
     <form onSubmit="renderMovieList(event)"> 
       <h2>Search Movies</h2>
@@ -73,44 +73,60 @@ function renderSearchBar(){
         </ul>
     </section>
 </section>  
-  `
+  `;
 }
 
 function renderMovieList(event) {
   event.preventDefault();
   const movieTitle = document.querySelector("#search").value;
   axios
+    //   .get(`/api/movies/${movieTitle}`)
+    //   .then((res) => res.data)
+    //   .then((movies) => {
+    //     state.movies = movies;
+    //   });
     .get(`https://omdbapi.com?apikey=2f6435d9&s=${movieTitle}`)
     .then((res) => {
       const movieList = res.data.Search.map((movie) => {
         const title = movie.Title;
         const posterUrl = movie.Poster;
-        console.log(movie.imdbID);
-
+        const imdbId = movie.imdbID;
+        // axios
+        //   .get(`https://omdbapi.com?apikey=2f6435d9&i=${imdbId}`)
+        //   .then((res) => {
+        //     const movie = res.data;
+        //     axios.post("/api/movies", movie);
+        //   });
         return `
-              <div>
-              <h6>${title}</h6>
-              <img src='${posterUrl}' onClick="renderMovieDetail('${movie.imdbID}')">
-              </div>
-            `;
+                <div>
+                <h3>${title}</h3>
+                <img src='${posterUrl}' onClick="renderMovieDetail('${imdbId}')">
+                </div>
+              `;
       }).join("");
-      document.querySelector('.movies-default').innerHTML = movieList
+      document.querySelector(".movies-default").innerHTML = movieList;
     });
 }
 
 function renderMovieDetail(imdbId) {
-  console.log("Hello");
   axios.get(`https://omdbapi.com?apikey=2f6435d9&i=${imdbId}`).then((res) => {
     const movie = res.data;
-    console.log(res);
+    console.log(movie);
     const movieDetail = `
         <div>
-          <img src="${movie.Poster}"></img>
+          <h3>${movie.Title}</h3>
+          <h5>Actors: ${movie.Actors}</h5>
+          <p>Description: ${movie.Plot}</p>
         </div>
         <div>
-          <h4>${movie.Title}</h4>
-          <h6></h6>
+          <img src="${movie.Poster}"></img>
+          <ul>              
+            <li class="material-icons like-icon">thumb_up</li>
+            <li class="material-icons sign-up-icon">thumb_down</li>
+          </ul>
         </div>
+
       `;
+    document.querySelector(".movies-default").innerHTML = movieDetail;
   });
 }
