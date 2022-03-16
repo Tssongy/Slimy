@@ -26,7 +26,7 @@ function signUp(event) {
   const form = event.target
   const data = Object.fromEntries(new FormData(form))
   axios
-    .post('/users', data)
+    .post('/api/users', data)
     .then(res => res.data)
     .then(userName => console.log(userName))
 }
