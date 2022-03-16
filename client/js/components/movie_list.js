@@ -1,4 +1,5 @@
-function renderMovieList() { 
+function renderMovieList(event) {
+  event.preventDefault();
   const movieTitle = document.querySelector("#search").value;
   axios
     .get(`https://omdbapi.com?apikey=2f6435d9&s=${movieTitle}`)
@@ -6,12 +7,12 @@ function renderMovieList() {
       const movieList = res.data.Search.map((movie) => {
         const title = movie.Title;
         const posterUrl = movie.Poster;
-        const imdbId = movie.imdbID;
-        console.log(imdbId);
+        console.log(movie.imdbID);
+
         return `
               <div>
               <h6>${title}</h6>
-              <img src="${posterUrl}" onClick="renderMovieDetail(${imdbId})"></img>
+              <img src='${posterUrl}' onClick="renderMovieDetail('${movie.imdbID}')">
               </div>
             `;
       }).join("");
@@ -20,8 +21,9 @@ function renderMovieList() {
 }
 
 function renderMovieDetail(imdbId) {
+  console.log("Hello");
   axios.get(`https://omdbapi.com?apikey=2f6435d9&i=${imdbId}`).then((res) => {
-    const movie = res;
+    const movie = res.data;
     console.log(res);
     const movieDetail = `
         <div>
