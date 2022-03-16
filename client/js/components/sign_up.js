@@ -29,4 +29,5 @@ function signUp(event) {
     .post('/api/users', data)
     .then(res => res.data)
     .then(userName => console.log(userName))
+  renderLogin()
 }
