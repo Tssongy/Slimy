@@ -1,11 +1,17 @@
 function renderHeaderNav() {
-    document.querySelector('#header-nav').innerHTML = `
-      <ul>
-        <li class="material-icons add-movie" onClick="render('addMovie')">add_circle</li>
-        <li class="material-icons edit-movie" onClick="render('movieList')">edit</li>
-        <li class="material-icons sign-up-icon" onClick="render('signUp')">person_add</li>
-        <li class="material-icons login-icon" onClick="render('login')">login</li>
-      </ul>
+    document.querySelector('#header-nav').innerHTML = `    
+    <ul>              
+      <li class="material-icons sign-up-icon" onClick="render('signUp')">person_add</li>
+      <li class="material-icons login-icon" onClick="render('login')">login</li>
+    </ul>
+    <form onSubmit="render('movieList')"> 
+      <fieldset>
+        <label>movie title:</label>
+        <input id="search" type='text' name='movie-title'>
+        </input>
+      </fieldset>
+      <button id="search-btn">search</button>     
+    </form>
     `
   }
   
@@ -14,9 +20,8 @@ function renderHeaderNav() {
   
   // decide which component to display on the page
   function render(component) {
-    if (component === 'addMovie') {
-      renderAddMovie()
-    } else if (component === 'movieList') {
+    
+    if (component === 'movieList') {
       renderMovieList()
     } else if (component === 'signUp') {
       renderSignUp()
