@@ -23,7 +23,7 @@ function login(event) {
   const form = event.text
   const data = object.fromEntries(new FormData(form))
   axios
-    .post('/sessions', data)
+    .post('/api/sessions', data)
     .then(res => res.data)
     .catch(error => {
       let errorDom = document.querySelector('.log-in .error')
