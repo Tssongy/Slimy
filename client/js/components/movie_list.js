@@ -99,7 +99,7 @@ function renderMovieList(event) {
         //   });
         return `
                 <div>
-                <h6>${title}</h6>
+                <h3>${title}</h3>
                 <img src='${posterUrl}' onClick="renderMovieDetail('${imdbId}')">
                 </div>
               `;
