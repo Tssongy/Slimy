@@ -3,9 +3,13 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 
+// const state = {
+//   user: {}
+// };
+
 router.get("/", (req, res) => {
   if (req.session.username) {
-    res.status(200).json({ username: req.session.username });
+    res.status(200).json({ username: req.session.username, userId: req.session.userID});
   } else {
     res.status(401).json({ message: "You are not logged in" });
   }
@@ -22,7 +26,7 @@ router.post("/", (req, res) => {
       if (isValidPassword) {
         req.session.userID = user.id;
         req.session.username = user.name;
-        res.status(200).json({ UserName: user.name });
+        res.status(200).json({ userName: user.name, userId: user.id });
       } else {
         res.status(422).json({ message: "invalid email or password" });
       }
