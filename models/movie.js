@@ -13,23 +13,23 @@ const Movie = {
 
     return db.query(sql, [movie_id]);
   },
+  findMovieByImdbId: (imdbId) => {
+    const sql = `SELECT * FROM movies WHERE imdbid = $1`;
 
-  create: (title, actors, poster, description) => {
-    const sql = `INSERT INTO movies (title, actors, poster, description) VALUES ($1, $2, $3, $4)`;
-
-    return db
-      .query(sql, [title, actors, poster, description])
-      .then((dbRes) => dbRes.rows[0]);
+    return db.query(sql, [poster]).then((dbRes) => dbRes.rows[0]);
   },
 
-  isSearched: (keyword) => {
-    const sql = `SELECT * FROM searchs WHERE keyword = $1`;
-    const result = db.query(sql, [keyword]).then((dbRes) => dbRes.rows[0]);
-    if (result) {
-      return true;
-    } else {
-      return false;
-    }
+  create: (title, actors, poster, description, year, imdbid) => {
+    const sql = `INSERT INTO movies (title, actors, poster, description, year, imdbid) VALUES ($1, $2, $3, $4, $5, $6)`;
+
+    return db
+      .query(sql, [title, actors, poster, description, year, imdbid])
+      .then((dbRes) => dbRes.rows);
+  },
+
+  isExist: (imdbId) => {
+    const sql = `SELECT * FROM movies WHERE imdbid = $1`;
+    return db.query(sql, [imdbId]).then((dbRes) => dbRes.rows.length);
   },
 };
 
