@@ -6,7 +6,8 @@ body {
     margin: 0 3em;
     font-family: 'Ubuntu', sans-serif;
     display:flex; 
-    flex-direction:column; 
+    flex-direction:column;
+    background-color: #5cbdbb;
 }
 
 .header-nav h1 {
@@ -28,7 +29,8 @@ body {
 
 }
 
-form {
+
+.log-in form,  .sign-up form{
     max-width: 700px;
     margin: 0 auto;
     border-radius: 0.5em;
@@ -52,8 +54,55 @@ form button {
     padding: 0.5em;
 }
 
+.search-container {
+    background: #fff;
+    height: 30px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+    max-width: 400px;
+}
+
+.search-container input {
+    background: transparent;
+    border: none;
+    outline:none;
+    font-weight: 500;
+    font-size: 16px;
+    width: 100%;
+}
+
+.search-container .search-btn .fas{
+    color: #5cbdbb;
+}
+
 footer{
     margin-top: 1em;
     text-align: right; 
     border-top: 1px solid black;
 }
+
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: lightslategray; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 25px; /* Increase font size */
+    opacity: 0.8;
+}
+  

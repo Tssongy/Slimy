@@ -1,15 +1,15 @@
 function renderSearchBar() {
   document.querySelector("#page").innerHTML = `
   <section class='search'>
-    <form onSubmit="renderMovieList(event)"> 
-      <h2>Search Movies</h2>
-      <fieldset>
-        <label>movie title:</label>
-        <input id="search" type='text' name='movie-title'>
-        </input>
-      </fieldset>
-      <button id="search-btn">search</button>     
-    </form>
+    <h2>Search Movies</h2>
+      <div class="search-container">  
+      <input id="search" type='text' name='movie-title' placeholder="Search...">
+      </input>
+      <span class="search-btn" onClick="renderMovieList()">
+        <i class="fas fa-search"></i> 
+      </span> 
+      </div>
+ 
   </section>
   <section class='movies-default'>
       <div>
@@ -68,8 +68,7 @@ function renderSearchBar() {
   `;
 }
 
-function renderMovieList(event) {
-  event.preventDefault();
+function renderMovieList() {
   const movieTitle = document.querySelector("#search").value;
   axios
     .get(`https://omdbapi.com?apikey=2f6435d9&s=${movieTitle}`)
