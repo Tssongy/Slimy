@@ -2,7 +2,7 @@
     cursor: pointer;
 }
 
-.material-icons.search-icon {
+.material-icons.home-icon {
     font-size: 2em;
 }
 
@@ -11,6 +11,10 @@
 }
 
 .material-icons.login-icon {
+    font-size: 2em;
+}
+
+.material-icons.logout-icon {
     font-size: 2em;
 }
 

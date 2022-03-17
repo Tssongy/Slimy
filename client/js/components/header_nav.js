@@ -20,9 +20,9 @@ function renderNotLoggedInHeaderNav() {
   document.querySelector("#header-nav").innerHTML = `
     <h1 onClick="render('movieList')">Welcome to Slimy world</h1>    
     <ul>            
-      <li class="material-icons search-icon" onClick="render('movieList')">search</li>
+      <li class="material-icons home-icon" onClick="render('movieList')">home</li>
       <li class="material-icons sign-up-icon" onClick="render('signUp')">person_add</li>
-      <li class="material-icons login-icon" onClick="render('login')">login</li>
+      <li class="material-icons login-icon" onClick="render('logIn')">login</li>
     </ul>
     `
 }
@@ -31,7 +31,7 @@ function renderLoggedInHeaderNav(userName) {
   document.querySelector("#header-nav").innerHTML = `
     <h1 onClick="render('movieList')">Welcome to Slimy world, <span style="text-transform:uppercase">${userName}</span></h1>
     <ul>           
-      <li class="material-icons search-icon" onClick="render('movieList')">search</li>
+      <li class="material-icons home-icon" onClick="render('movieList')">home</li>
       <li class="material-icons logout-icon" onClick="render('logOut')">logout</li>
     </ul>
     `
@@ -47,7 +47,7 @@ function render(component) {
     renderSearchBar()
   } else if (component === "signUp") {
     renderSignUp();
-  } else if (component === "login") {
+  } else if (component === "logIn") {
     renderLogin();
   } else if (component === 'logOut'){
     renderLogOut()
