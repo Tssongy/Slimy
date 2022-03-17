@@ -13,6 +13,12 @@ const Reviews = {
       .query(sql, [user_id, movie_id, 4.5, review])
       .then((dbRes) => dbRes.rows);
   },
+  doesExist: (userId, movieId) => {
+    const sql = `SELECT * FROM Reviews WHERE user_id = $1 AND movie_id = $2`
+    return db
+            .query(sql, [userId, movieId])
+            .then((dbRes) => dbRes.rows.length)
+  }
 };
 
 module.exports = Reviews;

@@ -13,11 +13,18 @@ router.post("/", (req, res) => {
   const { comment, movieId, userId } = req.body;
 
   if(!!userId){
-    Reviews.create(userId, movieId, comment).then(() =>
-    res.json({ message: "success" })
-    );
-    //   const review =
-    //   Reviews.create(user_id, movieId, Rating, Review);
+    Reviews.doesExist(userId, movieId).then((data) => {
+      if(data > 0){
+        res.status(401).json({ message: "You already left a review on this movie"})
+      }
+      else {
+        Reviews.create(userId, movieId, comment).then(() =>
+        res.json({ message: "success" })
+        );
+        //   const review =
+        //   Reviews.create(user_id, movieId, Rating, Review);
+      }
+    })
   }
   else {
     res.status(401).json({ message: "Please sign in to leave a review"})
