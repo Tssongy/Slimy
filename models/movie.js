@@ -16,7 +16,7 @@ const Movie = {
   findMovieByImdbId: (imdbId) => {
     const sql = `SELECT * FROM movies WHERE imdbid = $1`;
 
-    return db.query(sql, [poster]).then((dbRes) => dbRes.rows[0]);
+    return db.query(sql, [imdbId]).then((dbRes) => dbRes.rows[0]);
   },
 
   create: (title, actors, poster, description, year, imdbid) => {
