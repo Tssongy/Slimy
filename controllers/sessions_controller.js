@@ -3,6 +3,15 @@ const User = require('../models/user')
 const bcrypt = require('bcrypt')
 const router = express.Router()
 
+router.get('/', (req, res) => {
+  if (req.session.username) {
+    res.status(200).json({ username: req.session.username });
+  } 
+  else {
+      res.status(401).json({ message: "You are not logged in" });
+  }
+})
+
 router.post('/', (req, res) => {
   const {email, password} = req.body
   User
@@ -12,6 +21,7 @@ router.post('/', (req, res) => {
         const isValidPassword = bcrypt.compareSync(password, user.password_digest)
         if (isValidPassword) {
           req.session.userID = user.id
+          req.session.username = user.name
           res.status(200).json({UserName: user.name})
         }
         else {
@@ -25,7 +35,7 @@ router.post('/', (req, res) => {
 })
 
 router.delete('/', (req, res) => {
-  req.session.userID = null
+  req.session.destroy()
   res.json({message: 'successfully logged out'})
 })
 
