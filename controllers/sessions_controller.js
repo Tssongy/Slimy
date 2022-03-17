@@ -24,4 +24,9 @@ router.post('/', (req, res) => {
     })
 })
 
+router.delete('/', (req, res) => {
+  req.session.userID = null
+  res.json({message: 'successfully logged out'})
+})
+
 module.exports = router
