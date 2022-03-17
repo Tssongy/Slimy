@@ -1,9 +1,9 @@
 function renderLogin() {
   document.querySelector("#page").innerHTML = `
   <section class="log-in">
-    <div class="error"></div>
     <form action="" onSubmit="login(event)">
       <h2>Login:</h2>
+      <div class="error"></div>
       <fieldset>
         <label for="">Email:</label>
         <input type="text" name="email">
@@ -38,6 +38,8 @@ function login(event) {
       state.user.userId = userInfo.userId
       console.log(state.user)
       renderHeaderNav();
+      renderSearchBar()
+      renderMovieList()
     })
     .catch((error) => {
       let errorDOM = document.querySelector(".log-in .error");
@@ -52,7 +54,8 @@ function renderLogOut() {
     .then((res) => {
       console.log(res.message);
       state.user = {}
-      console.log(state.user)
-      renderHeaderNav();
+      renderHeaderNav()
+      renderSearchBar()
+      renderMovieList()
     });
 }

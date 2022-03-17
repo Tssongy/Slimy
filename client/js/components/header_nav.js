@@ -29,7 +29,7 @@ function renderNotLoggedInHeaderNav() {
 
 function renderLoggedInHeaderNav(userName) {
   document.querySelector("#header-nav").innerHTML = `
-    <h1 onClick="render('movieList')">Welcome to Slimy world, ${userName}</h1>   
+    <h1 onClick="render('movieList')">Welcome to Slimy world, <span style="text-transform:uppercase">${userName}</span></h1>
     <ul>           
       <li class="material-icons search-icon" onClick="render('movieList')">search</li>
       <li class="material-icons logout-icon" onClick="render('logOut')">logout</li>
