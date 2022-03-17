@@ -33,8 +33,10 @@ function login(event) {
   axios
     .post("/api/sessions", data)
     .then((res) => res.data)
-    .then((userName) => {
-      console.log(userName.UserName);
+    .then((userInfo) => {
+      state.user.userName = userInfo.userName
+      state.user.userId = userInfo.userId
+      console.log(state.user)
       renderHeaderNav();
     })
     .catch((error) => {
@@ -48,8 +50,9 @@ function renderLogOut() {
     .delete("/api/sessions")
     .then((res) => res.data)
     .then((res) => {
-      console.log(session.userId);
       console.log(res.message);
+      state.user = {}
+      console.log(state.user)
       renderHeaderNav();
     });
 }

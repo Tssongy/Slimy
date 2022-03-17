@@ -1,13 +1,19 @@
 function renderHeaderNav() {
-  axios
-    .get('/api/sessions/')
-    .then((res) => res.data)
-    .then((res) => {
-      renderLoggedInHeaderNav(res.username);
-    })
-    .catch((err) => {
-      renderNotLoggedInHeaderNav();
-    });
+  if(!state.user.userName){
+    renderNotLoggedInHeaderNav()
+  }
+  else {
+    renderLoggedInHeaderNav(state.user.userName)
+  }
+  // axios
+  //   .get('/api/sessions/')
+  //   .then((res) => res.data)
+  //   .then((res) => {
+  //     renderLoggedInHeaderNav(res.username);
+  //   })
+  //   .catch((err) => {
+  //     renderNotLoggedInHeaderNav();
+  //   });
 }
 
 function renderNotLoggedInHeaderNav() {
