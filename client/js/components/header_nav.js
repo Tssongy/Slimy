@@ -20,10 +20,9 @@ function render(component) {
     renderSignUp();
   } else if (component === "login") {
     renderLogin();
-  } else if (component === 'logOut') {
-    renderSearchBar()
-    renderHeaderNav()
-  } 
+  } else if (component === 'logOut'){
+    renderLogOut()
+  }
 }
 
 // component to render initially

@@ -23,8 +23,13 @@ function login(event) {
   const form = event.target
   const data = Object.fromEntries(new FormData(form))
 
-  renderHeaderNav()
-
+  document.querySelector("#header-nav").innerHTML = `
+    <h1 onClick="render('movieList')">Welcome to Slimy world</h1>
+    <ul>
+      <li class="material-icons search-icon" onClick="render('movieList')">search</li>
+      <li class="material-icons logout-icon" onClick="render('logOut')">logout</li>
+    </ul>
+    `
   axios
     .post('/api/sessions', data)
     .then(res => res.data)
@@ -34,4 +39,13 @@ function login(event) {
       errorDOM.textContent = error.response.data.message
     })
   renderSearchBar()
+}
+
+function renderLogOut(){
+  axios
+    .delete('/api/sessions')
+    .then(res => res.data)
+    .then(res => console.log(res.message))
+  renderSearchBar()
+  renderHeaderNav()
 }
