@@ -1,5 +1,6 @@
 function renderHeaderNav() {
-  document.querySelector("#header-nav").innerHTML = `    
+  document.querySelector("#header-nav").innerHTML = `
+    <h1 onClick="render('movieList')">Welcome to Slimy world</h1>    
     <ul>              
       <li class="material-icons search-icon" onClick="render('movieList')">search</li>
       <li class="material-icons sign-up-icon" onClick="render('signUp')">person_add</li>
@@ -19,7 +20,10 @@ function render(component) {
     renderSignUp();
   } else if (component === "login") {
     renderLogin();
-  }
+  } else if (component === 'logOut') {
+    renderSearchBar()
+    renderHeaderNav()
+  } 
 }
 
 // component to render initially
