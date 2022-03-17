@@ -9,12 +9,12 @@ router.get("/:movieId", (req, res) => {
   Reviews.findMovieReviews(movieId).then((comments) => res.json(comments));
 });
 
-// router.post("/:id/:movieId", (req, res) => {
-//   const user_id = req.params.id;
-//   const movie_id = req.params.movieId;
-//   const rating = req.body.Rating;
-//   const review = req.body.Review;
+router.post("/", (req, res) => {
+  const { comment, movieId, userId } = req.body;
 
-//   Reviews.create(user_id, movieId, Rating, Review);
-// });
+  Reviews.create(userId, movieId, comment);
+  res.json({ message: "success" });
+  //   const review =
+  //   Reviews.create(user_id, movieId, Rating, Review);
+});
 module.exports = router;
