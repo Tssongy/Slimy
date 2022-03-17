@@ -80,23 +80,18 @@ function renderMovieList(event) {
   event.preventDefault();
   const movieTitle = document.querySelector("#search").value;
   axios
-    //   .get(`/api/movies/${movieTitle}`)
-    //   .then((res) => res.data)
-    //   .then((movies) => {
-    //     state.movies = movies;
-    //   });
     .get(`https://omdbapi.com?apikey=2f6435d9&s=${movieTitle}`)
     .then((res) => {
       const movieList = res.data.Search.map((movie) => {
         const title = movie.Title;
         const posterUrl = movie.Poster;
         const imdbId = movie.imdbID;
-        // axios
-        //   .get(`https://omdbapi.com?apikey=2f6435d9&i=${imdbId}`)
-        //   .then((res) => {
-        //     const movie = res.data;
-        //     axios.post("/api/movies", movie);
-        //   });
+        axios
+          .get(`https://omdbapi.com?apikey=2f6435d9&i=${imdbId}`)
+          .then((res) => {
+            const movie = res.data;
+            axios.post("/api/movies", movie);
+          });
         return `
                 <div>
                 <h3>${title}</h3>
@@ -109,7 +104,8 @@ function renderMovieList(event) {
 }
 
 function renderMovieDetail(imdbId) {
-  axios.get(`https://omdbapi.com?apikey=2f6435d9&i=${imdbId}`).then((res) => {
+  console.log(imdbId);
+  axios.get(`/api/movies/${imdbId}`).then((res) => {
     const movie = res.data;
     console.log(movie);
     const movieDetail = `
