@@ -12,10 +12,16 @@ router.get("/:movieId", (req, res) => {
 router.post("/", (req, res) => {
   const { comment, movieId, userId } = req.body;
 
-  Reviews.create(userId, movieId, comment).then(() =>
+  if(!!userId){
+    Reviews.create(userId, movieId, comment).then(() =>
     res.json({ message: "success" })
-  );
-  //   const review =
-  //   Reviews.create(user_id, movieId, Rating, Review);
+    );
+    //   const review =
+    //   Reviews.create(user_id, movieId, Rating, Review);
+  }
+  else {
+    res.status(401).json({ message: "Please sign in to leave a review"})
+  }
 });
+
 module.exports = router;

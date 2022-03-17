@@ -115,6 +115,7 @@ function renderMovieDetail(imdbId) {
         <form id="add-comment" onSubmit='createReviewsMovie(event, ${state.user.userId}, ${movie.id})'>
           <fieldset>
             <label for="">comment:</label>
+            <section class="error"></section>
             <input type="text" name="comment">
           </fieldset>
           <button>Submit</button>
@@ -160,5 +161,11 @@ function createReviewsMovie(event, userId, movieId) {
   data.movieId = movieId;
   // data.rating = rating;
   console.log(data);
-  axios.post("/api/reviews", data).then(() => renderMovieReviews(movieId));
+  axios.post("/api/reviews", data)
+    .then((res) => res.data)
+    .then(() => renderMovieReviews(movieId))
+    .catch((error) => {
+      let errorDOM = document.querySelector('.movies-default .error')
+      errorDOM.textContent = error.response.data.message;
+    })
 }
