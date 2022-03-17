@@ -1,5 +1,5 @@
-function renderLogin () {
-  document.querySelector('#page').innerHTML = `
+function renderLogin() {
+  document.querySelector("#page").innerHTML = `
   <section class="log-in">
     <div class="error"></div>
     <form action="" onSubmit="login(event)">
@@ -15,13 +15,13 @@ function renderLogin () {
       <button>Login</button>
     </form>
     </section>
-  `
+  `;
 }
 
 function login(event) {
-  event.preventDefault()
-  const form = event.target
-  const data = Object.fromEntries(new FormData(form))
+  event.preventDefault();
+  const form = event.target;
+  const data = Object.fromEntries(new FormData(form));
 
   // document.querySelector("#header-nav").innerHTML = `
   //   <h1 onClick="render('movieList')">Welcome to Slimy world</h1>
@@ -31,25 +31,25 @@ function login(event) {
   //   </ul>
   //   `
   axios
-    .post('/api/sessions', data)
-    .then(res => res.data)
-    .then(userName => {
-      console.log(userName.UserName)
-      renderHeaderNav()
+    .post("/api/sessions", data)
+    .then((res) => res.data)
+    .then((userName) => {
+      console.log(userName.UserName);
+      renderHeaderNav();
     })
-    .catch(error => {
-      let errorDOM = document.querySelector('.log-in .error')
-      errorDOM.textContent = error.response.data.message
-    })
+    .catch((error) => {
+      let errorDOM = document.querySelector(".log-in .error");
+      errorDOM.textContent = error.response.data.message;
+    });
 }
 
-function renderLogOut(){
+function renderLogOut() {
   axios
-    .delete('/api/sessions')
-    .then(res => res.data)
-    .then(res => {
-      console.log(res.message)
-      renderHeaderNav()
-    })
-  
+    .delete("/api/sessions")
+    .then((res) => res.data)
+    .then((res) => {
+      console.log(session.userId);
+      console.log(res.message);
+      renderHeaderNav();
+    });
 }

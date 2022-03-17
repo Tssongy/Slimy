@@ -3,10 +3,11 @@ const Reviews = require("../models/reviews");
 
 const router = express.Router();
 
-// router.get("/:id", (req, res) => {
-//   const movieId = req.params.title
-//   Reviews.findMovieReviews(movieId).then((comments) => res.json(comments))
-// })
+router.get("/:movieId", (req, res) => {
+  const movieId = req.params.movieId;
+  console.log(movieId);
+  Reviews.findMovieReviews(movieId).then((comments) => res.json(comments));
+});
 
 // router.post("/:id/:movieId", (req, res) => {
 //   const user_id = req.params.id;
@@ -16,4 +17,4 @@ const router = express.Router();
 
 //   Reviews.create(user_id, movieId, Rating, Review);
 // });
-module.exports = router
+module.exports = router;

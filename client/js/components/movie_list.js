@@ -62,7 +62,7 @@ function renderSearchBar() {
         <img src="https://upload.wikimedia.org/wikipedia/en/5/5b/Green_Book_%282018_poster%29.png" alt="">
         <div class='title'>Green Book</div>
         <div class='rating'>8.3</div>
-      </div
+      </div>
             
 </section>  
   `;
@@ -98,7 +98,6 @@ function renderMovieList(event) {
 function renderMovieDetail(imdbId) {
   axios.get(`/api/movies/${imdbId}`).then((res) => {
     const movie = res.data;
-    console.log(movie);
     const movieDetail = `
         <div>
           <h3>${movie.title}</h3>
@@ -113,8 +112,46 @@ function renderMovieDetail(imdbId) {
             <li class="material-icons sign-up-icon">thumb_down</li>
           </ul>
         </div>
-
+        <section id=reviews-box></section>
+        <form id="add-comment">
+          <fieldset>
+            <label for="">comment:</label>
+            <input type="text" name="comment">
+          </fieldset>
+          <button>Submit</button>
+        </form>
       `;
     document.querySelector(".movies-default").innerHTML = movieDetail;
+    renderMovieReviews(movie.id);
   });
+}
+
+function renderMovieReviews(movieId) {
+  axios
+    .get(`/api/reviews/${movieId}`)
+    .then((res) => res.data)
+    .then((res) => {
+      // if (res.review) {
+      console.log(res);
+      const reviewsBox = res
+        .map((movie) => {
+          return `
+          <div>
+            <p>"${movie.review}"</p>
+            <ul>              
+              <li class="material-icons like-icon">thumb_up</li>
+              <li class="material-icons sign-up-icon">thumb_down</li>
+          </ul>
+          </div>
+        `;
+        })
+        .join("");
+      // }
+
+      document.querySelector("#reviews-box").innerHTML = reviewsBox;
+    });
+}
+
+function createReviewsMovie(user_id, movie_id, rating, review) {
+  axios.post();
 }
