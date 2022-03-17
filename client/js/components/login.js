@@ -1,7 +1,7 @@
 function renderLogin () {
   document.querySelector('#page').innerHTML = `
   <section class="log-in">
-    <div class"error"></div>
+    <div class="error"></div>
     <form action="" onSubmit="login(event)">
       <h2>Login:</h2>
       <fieldset>
@@ -23,29 +23,33 @@ function login(event) {
   const form = event.target
   const data = Object.fromEntries(new FormData(form))
 
-  document.querySelector("#header-nav").innerHTML = `
-    <h1 onClick="render('movieList')">Welcome to Slimy world</h1>
-    <ul>
-      <li class="material-icons search-icon" onClick="render('movieList')">search</li>
-      <li class="material-icons logout-icon" onClick="render('logOut')">logout</li>
-    </ul>
-    `
+  // document.querySelector("#header-nav").innerHTML = `
+  //   <h1 onClick="render('movieList')">Welcome to Slimy world</h1>
+  //   <ul>
+  //     <li class="material-icons search-icon" onClick="render('movieList')">search</li>
+  //     <li class="material-icons logout-icon" onClick="render('logOut')">logout</li>
+  //   </ul>
+  //   `
   axios
     .post('/api/sessions', data)
     .then(res => res.data)
-    .then(userName => console.log(userName))
+    .then(userName => {
+      console.log(userName.UserName)
+      renderHeaderNav()
+    })
     .catch(error => {
       let errorDOM = document.querySelector('.log-in .error')
       errorDOM.textContent = error.response.data.message
     })
-  renderSearchBar()
 }
 
 function renderLogOut(){
   axios
     .delete('/api/sessions')
     .then(res => res.data)
-    .then(res => console.log(res.message))
-  renderSearchBar()
-  renderHeaderNav()
+    .then(res => {
+      console.log(res.message)
+      renderHeaderNav()
+    })
+  
 }
