@@ -34,12 +34,12 @@ function login(event) {
     .post("/api/sessions", data)
     .then((res) => res.data)
     .then((userInfo) => {
-      state.user.userName = userInfo.userName
-      state.user.userId = userInfo.userId
-      console.log(state.user)
+      state.user.userName = userInfo.userName;
+      state.user.userId = userInfo.userId;
+      console.log(state.user);
       renderHeaderNav();
-      renderSearchBar()
-      renderMovieList()
+      renderSearchBar();
+      renderMovieList();
     })
     .catch((error) => {
       let errorDOM = document.querySelector(".log-in .error");
@@ -53,9 +53,9 @@ function renderLogOut() {
     .then((res) => res.data)
     .then((res) => {
       console.log(res.message);
-      state.user = {}
-      renderHeaderNav()
-      renderSearchBar()
-      renderMovieList()
+      state.user = {};
+      renderHeaderNav();
+      renderSearchBar();
+      renderMovieList();
     });
 }

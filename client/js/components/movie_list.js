@@ -112,7 +112,7 @@ function renderMovieDetail(imdbId) {
           </ul>
         </div>
         <section id=reviews-box></section>
-        <form id="add-comment">
+        <form id="add-comment" onSubmit='createReviewsMovie(event, ${state.user.userId}, ${movie.id})'>
           <fieldset>
             <label for="">comment:</label>
             <input type="text" name="comment">
@@ -144,6 +144,7 @@ function renderMovieReviews(movieId) {
           </div>
         `;
         })
+        .slice(0, 5)
         .join("");
       // }
 
@@ -151,6 +152,14 @@ function renderMovieReviews(movieId) {
     });
 }
 
-function createReviewsMovie(user_id, movie_id, rating, review) {
-  axios.post();
+function createReviewsMovie(event, userId, movieId) {
+  event.preventDefault();
+  const form = event.target;
+  const data = Object.fromEntries(new FormData(form));
+  data.userId = userId;
+  data.movieId = movieId;
+  // data.rating = rating;
+  console.log(data);
+  axios.post("/api/reviews", data);
+  renderMovieReviews(movieId);
 }
