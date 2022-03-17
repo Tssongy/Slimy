@@ -1,0 +1,16 @@
+.material-icons {
+    cursor: pointer;
+}
+
+.material-icons.search-icon {
+    font-size: 2em;
+}
+
+.material-icons.sign-up-icon {
+    font-size: 2em;
+}
+
+.material-icons.login-icon {
+    font-size: 2em;
+}
+

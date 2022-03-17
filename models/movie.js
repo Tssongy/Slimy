@@ -2,7 +2,7 @@ const db = require("../db/db");
 
 const Movie = {
   findSearchResults: (title) => {
-    const queryTitle = "%" + title + "%";
+    // const queryTitle = "%" + title + "%";
     const sql = `SELECT * FROM movies WHERE title LIKE $1`;
 
     return db.query(sql, [queryTitle]).then((dbRes) => dbRes.rows);
