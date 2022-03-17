@@ -6,11 +6,11 @@ function renderLogin () {
       <h2>Login:</h2>
       <fieldset>
         <label for="">Email:</label>
-        <input type="text" name="email"
+        <input type="text" name="email">
       </fieldset>  
       <fieldset>
         <label for="">Password:</label>
-        <input type="password" name="password"
+        <input type="password" name="password">
       </fieldset>  
       <button>Login</button>
     </form>
@@ -22,6 +22,9 @@ function login(event) {
   event.preventDefault()
   const form = event.target
   const data = Object.fromEntries(new FormData(form))
+
+  renderHeaderNav()
+
   axios
     .post('/api/sessions', data)
     .then(res => res.data)
