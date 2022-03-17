@@ -21,6 +21,15 @@ function renderSignUp () {
   `
 }
 
+function renderAccountCreationSuccessful(){
+  document.querySelector('#page').innerHTML =`
+    <main>
+      <h1>Account Creation Successful</h1>
+      <h3>Click <span onClick=render(logIn) style="text-decoration:underline;cursor:pointer">here</span> to log in</h3>
+    </main>
+  `
+}
+
 function signUp(event) {
   event.preventDefault()
   const form = event.target
@@ -29,5 +38,5 @@ function signUp(event) {
     .post('/api/users', data)
     .then(res => res.data)
     .then(userName => console.log(userName))
-  renderLogin()
+  renderAccountCreationSuccessful()
 }
