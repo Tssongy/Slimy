@@ -4,16 +4,37 @@
 
 body {
     margin: 0 3em;
+    font-family: 'Ubuntu', sans-serif;
+    display:flex; 
+    flex-direction:column; 
+}
+
+.header-nav h1 {
+    cursor: pointer;
 }
 
 .header-nav{
-    margin: 0 auto;
-    padding: 0 1em;
+    display:flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid black;
+}
+
+#page section{
+    
+    margin-top: 1em;
+    margin-bottom: 1em;
+
 }
 
 form {
     max-width: 700px;
     margin: 0 auto;
+    border-radius: 0.5em;
+    padding: 0 0.5em;
+    border-top: 5px solid #f5ba1a;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }
 
 form fieldset {
@@ -29,4 +50,10 @@ form input {
 
 form button {
     padding: 0.5em;
+}
+
+footer{
+    margin-top: 1em;
+    text-align: right; 
+    border-top: 1px solid black;
 }
