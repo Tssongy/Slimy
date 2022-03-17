@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.get("/:imdbId", (req, res) => {
   const imdbId = req.params.imdbId;
-  console.log("hello");
   Movie.findMovieByImdbId(imdbId).then((movies) => res.json(movies));
   //   const title = req.params.id;
   //   Movie.findSearchResults(title).then((movies) => res.json(movies));
