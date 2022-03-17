@@ -160,6 +160,5 @@ function createReviewsMovie(event, userId, movieId) {
   data.movieId = movieId;
   // data.rating = rating;
   console.log(data);
-  axios.post("/api/reviews", data);
-  renderMovieReviews(movieId);
+  axios.post("/api/reviews", data).then(() => renderMovieReviews(movieId));
 }
