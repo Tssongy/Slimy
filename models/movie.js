@@ -31,6 +31,15 @@ const Movie = {
     const sql = `SELECT * FROM movies WHERE imdbid = $1`;
     return db.query(sql, [imdbId]).then((dbRes) => dbRes.rows.length);
   },
+  isSearched: (keyword) => {
+    const sql = `SELECT * FROM searchs WHERE keyword = $1`;
+    const result = db.query(sql, [keyword]).then((dbRes) => dbRes.rows[0]);
+    if (result) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 };
 
 module.exports = Movie;
