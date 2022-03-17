@@ -108,19 +108,21 @@ function renderMovieDetail(imdbId) {
     const movie = res.data;
     console.log(movie);
     const movieDetail = `
-      <div>
-        <h3>${movie.title}</h3>
-        <h5>Actors: ${movie.actors}</h5>
-        <p>Description: ${movie.description}</p>
-        <p>Year: ${movie.year}</p>
-      </div>
-      <div>
-        <img src="${movie.poster}"></img>
-        <ul>              
-          <li class="material-icons like-icon">thumb_up</li>
-          <li class="material-icons sign-up-icon">thumb_down</li>
-        </ul>
-      </div>
-    `;
-  })
+        <div>
+          <h3>${movie.title}</h3>
+          <h5>Actors: ${movie.actors}</h5>
+          <p>Description: ${movie.description}</p>
+          <p>Year: ${movie.year}</p>
+        </div>
+        <div>
+          <img src="${movie.poster}"></img>
+          <ul>              
+            <li class="material-icons like-icon">thumb_up</li>
+            <li class="material-icons sign-up-icon">thumb_down</li>
+          </ul>
+        </div>
+
+      `;
+    document.querySelector(".movies-default").innerHTML = movieDetail;
+  });
 }
