@@ -32,6 +32,7 @@ function renderLoggedInHeaderNav(userName) {
     <h1 onClick="render('movieList')">Welcome to Slimy world, <span style="text-transform:uppercase">${userName}</span></h1>
     <ul>           
       <li class="material-icons home-icon" onClick="render('movieList')">home</li>
+      <li class="material-icons favorite-icon" onClick="render('favorite')">favorite</li>
       <li class="material-icons logout-icon" onClick="render('logOut')">logout</li>
     </ul>
     `
@@ -51,6 +52,8 @@ function render(component) {
     renderLogin();
   } else if (component === 'logOut'){
     renderLogOut()
+  } else if (component === 'favorite'){
+    renderFavorite()
   }
 }
 

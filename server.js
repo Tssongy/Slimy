@@ -7,6 +7,7 @@ const moviesController = require("./controllers/movies_controller");
 const usersController = require("./controllers/users_controller");
 const sessionsController = require("./controllers/sessions_controller");
 const reviewsController = require("./controllers/reviews_controller");
+// const favoritesController = require("./controllers/favorites_controller")
 
 const app = express();
 const port = 3000;
@@ -25,3 +26,4 @@ app.use("/api/movies", moviesController);
 app.use("/api/users", usersController);
 app.use("/api/sessions", sessionsController);
 app.use("/api/reviews", reviewsController);
+// app.use("/api/favorites", favoritesController)
