@@ -116,7 +116,7 @@ function renderMovieDetail(imdbId) {
           <fieldset>
             <label for="">comment:</label>
             <section class="error"></section>
-            <input type="text" name="comment">
+            ​<textarea id="txtArea" rows="10" cols="45" name="comment"></textarea>
           </fieldset>
           <button class="button-56" role="button">Submit</button>
         </form>
