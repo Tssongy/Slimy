@@ -19,6 +19,19 @@ const Movie = {
     return db.query(sql, [imdbId]).then((dbRes) => dbRes.rows[0]);
   },
 
+  findMoviesById: (id) => {
+    const idsInPar = "(" + id + ")";
+    console.log(idsInPar);
+    const sql = `SELECT * FROM movies WHERE id IN ${idsInPar}`;
+
+    return db.query(sql).then((dbRes) => dbRes.rows);
+  },
+
+  findTopRatingMovies: () => {
+    const sql = `SELECT movie_id, AVG(rating) AS avg_rating FROM reviews GROUP BY movie_id ORDER BY avg_rating DESC LIMIT 10`;
+    return db.query(sql).then((dbRes) => dbRes.rows);
+  },
+
   create: (title, actors, poster, description, year, imdbid) => {
     const sql = `INSERT INTO movies (title, actors, poster, description, year, imdbid) VALUES ($1, $2, $3, $4, $5, $6)`;
 
