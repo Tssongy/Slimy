@@ -34,4 +34,3 @@ CREATE TABLE reviews(
 ALTER TABLE movies ADD year INT;
 ALTER TABLE movies ADD imdbID TEXT;
 
-
