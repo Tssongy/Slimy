@@ -24,6 +24,13 @@ CREATE TABLE reviews(
     review TEXT
 );
 
+-- CREATE TABLE favorites(
+--     id SERIAL PRIMARY KEY,
+--     user_id INT,
+--     movie_id INT,
+--     imdbID TEXT
+-- );
+
 ALTER TABLE movies ADD year INT;
 ALTER TABLE movies ADD imdbID TEXT;
 

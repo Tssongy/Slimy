@@ -54,22 +54,38 @@ function renderMovieList() {
             const movie = res.data;
             axios.post("/api/movies", movie);
           });
-        return `
+        if(!!state.user.userName){
+          return `
+            <div>
+              <span id="favorite-btn" class="material-icons" onClick="renderFavoriteButton(event, '${imdbId}')">favorite_border</span>
+              <h3>${title}</h3>
+              <img src='${posterUrl}' onClick="renderMovieDetail('${imdbId}')">
+            </div>
+          `;
+        }
+        else {
+          return `
                 <div>
                 <h3>${title}</h3>
                 <img src='${posterUrl}' onClick="renderMovieDetail('${imdbId}')">
                 </div>
               `;
+        }  
       }).join("");
-      document.querySelector(".movies-default").innerHTML = movieList;
-    });
+      document.querySelector(".movies-default").innerHTML = movieList; 
+    })
 }
 
 function renderMovieDetail(imdbId) {
   axios.get(`/api/movies/${imdbId}`).then((res) => {
     const movie = res.data;
+    let favoriteIconDOM = ''
+    if(!!state.user.userName){
+      favoriteIconDOM = 'favorite_border'
+    }
     const movieDetail = `
         <div>
+        <span id="favorite-btn" class="material-icons"onClick="renderFavoriteButton(event, '${imdbId}')">${favoriteIconDOM}</span>
           <h3>${movie.title}</h3>
           <h5>Actors: ${movie.actors}</h5>
           <p>Description: ${movie.description}</p>
