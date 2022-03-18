@@ -111,7 +111,7 @@ function renderMovieDetail(imdbId) {
             <li class="material-icons sign-up-icon">thumb_down</li>
           </ul>
         </div>
-        <section id=reviews-box></section>
+        <section id=reviews-box><div class="reviews-div"></div></section>
         <form id="add-comment" onSubmit='createReviewsMovie(event, ${state.user.userId}, ${movie.id})'>
           <fieldset>
             <label for="">comment:</label>
@@ -136,20 +136,18 @@ function renderMovieReviews(movieId) {
       const reviewsBox = res
         .map((movie) => {
           return `
-          <div>
-            <p>"${movie.review}"</p>
-            <ul>              
-              <li class="material-icons like-icon">thumb_up</li>
-              <li class="material-icons sign-up-icon">thumb_down</li>
-          </ul>
-          </div>
+          <p>"${movie.review}"</p>
+          <ul>              
+            <li class="material-icons like-icon">thumb_up</li>
+            <li class="material-icons sign-up-icon">thumb_down</li>
+        </ul>
         `;
         })
         .slice(0, 5)
         .join("");
       // }
 
-      document.querySelector("#reviews-box").innerHTML = reviewsBox;
+      document.querySelector("#reviews-box .reviews-div").innerHTML = reviewsBox;
     });
 }
 
