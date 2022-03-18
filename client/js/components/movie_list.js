@@ -130,7 +130,7 @@ function renderMovieReviews(movieId) {
           <p>"${movie.review}"</p>
           <ul>              
             <li class="material-icons like-icon">thumb_up</li>
-            <li class="material-icons sign-up-icon">thumb_down</li>
+            <li class="material-icons dislike-icon">thumb_down</li>
         </ul>
         `;
         })
