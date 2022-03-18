@@ -18,7 +18,7 @@ The planning process involved the following steps:
 
 The Slimy app is a SPA(single page application ) but presents three different pages to users, the home page contains navigation and default movie list, where users can sign-up and log-in. After log-in, users can rate the movies and make comments on the movies.
 
-<p><img src="/demo/wireframes.png" width='500px' style="text-align:center;"></p>
+<p><img src="/demo/tables.png" width='500px' style="text-align:center;"></p>
 
 ### 2- Database diagram
 

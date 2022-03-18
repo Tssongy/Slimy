@@ -1,91 +1,107 @@
 .movies-default {
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1em;
 }
 
 .movies-default div {
-    border: 1px solid rgb(165, 111, 12);
-    border-radius: 0.5em;
-    padding: 0 1em;
-    /* box-shadow: 3px 3px 3px rgb(165, 111, 12); */
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  border: 1px solid rgb(165, 111, 12);
+  border-radius: 0.5em;
+  padding: 0 1em;
+  /* box-shadow: 3px 3px 3px rgb(165, 111, 12); */
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 .movies-default div img {
-    width: 100%;
+  width: 100%;
 }
 
 #add-comment {
-    display: grid;
-    align-items: baseline;
-    justify-items: end;
-    align-content: center;
+  display: grid;
+  align-items: baseline;
+  justify-items: end;
+  align-content: center;
 }
 
 #txtArea {
-    background: #fff;
-    border-radius: 30px;
-    padding: 10px 20px;
-    cursor: pointer;
-    box-shadow: 4px 4px 6px 0 rgb(255 255 255 / 30%), -4px -4px 6px 0 rgb(116 125 136 / 20%), inset -4px -4px 6px 0 rgb(255 255 255 / 20%), inset 4px 4px 6px 0 rgb(0 0 0 / 20%);
-    max-width: 400px;
+  background: #fff;
+  border-radius: 30px;
+  padding: 10px 20px;
+  cursor: pointer;
+  box-shadow: 4px 4px 6px 0 rgb(255 255 255 / 30%),
+    -4px -4px 6px 0 rgb(116 125 136 / 20%),
+    inset -4px -4px 6px 0 rgb(255 255 255 / 20%),
+    inset 4px 4px 6px 0 rgb(0 0 0 / 20%);
+  max-width: 400px;
 }
 
 .button-56 {
-    align-items: center;
-    background-color: #fee6e3;
-    border: 2px solid #111;
-    border-radius: 8px;
-    box-sizing: border-box;
-    color: #111;
-    cursor: pointer;
-    display: flex;
-    font-family: Inter,sans-serif;
-    font-size: 16px;
-    height: 48px;
-    justify-content: center;
-    line-height: 24px;
-    max-width: 100%;
-    padding: 0 25px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
 .button-56:after {
-    background-color: #111;
-    border-radius: 8px;
-    content: "";
-    display: block;
-    height: 48px;
-    left: 0;
-    width: 100%;
-    position: absolute;
-    top: -2px;
-    transform: translate(8px, 8px);
-    transition: transform .2s ease-out;
-    z-index: -1;
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform 0.2s ease-out;
+  z-index: -1;
 }
 
 .button-56:hover:after {
-    transform: translate(0, 0);
+  transform: translate(0, 0);
 }
 
 .button-56:active {
-    background-color: #ffdeda;
-    outline: 0;
+  background-color: #ffdeda;
+  outline: 0;
 }
 
 .button-56:hover {
-    outline: 0;
+  outline: 0;
 }
 
 @media (min-width: 768px) {
-    .button-56 {
+  .button-56 {
     padding: 0 40px;
-    }
+  }
+}
+
+.rating {
+  width: 180px;
+}
+
+.rating__star {
+  cursor: pointer;
+  color: #dabd18b2;
 }
