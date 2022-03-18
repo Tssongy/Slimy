@@ -99,6 +99,13 @@ function renderMovieDetail(imdbId) {
         <form id="add-comment" onSubmit='createReviewsMovie(event, ${state.user.userId}, ${movie.id})'>
           <fieldset>
             <label for="">comment:</label>
+            <div class="rating">
+              <i class="rating__star far fa-star"></i>
+              <i class="rating__star far fa-star"></i>
+              <i class="rating__star far fa-star"></i>
+              <i class="rating__star far fa-star"></i>
+              <i class="rating__star far fa-star"></i>
+            </div>
             <section class="error"></section>
             ​<textarea id="txtArea" rows="10" cols="45" name="comment"></textarea>
           </fieldset>
@@ -151,3 +158,26 @@ function createReviewsMovie(event, userId, movieId) {
       errorDOM.textContent = error.response.data.message;
     })
 }
+
+const ratingStars = [...document.getElementsByClassName("rating__star")];
+    function rating(stars) {
+        
+    const starClassActive = "rating__star fas fa-star";
+    const starClassInactive = "rating__star far fa-star";
+    const starsLength = stars.length;
+    let i;
+
+    stars.map((star) => {
+      star.onclick = () => {
+         i = stars.indexOf(star);
+
+         if (star.className===starClassInactive) {        
+            for (i; i >= 0; --i) stars[i].className = starClassActive;
+         } else {
+            for (i; i < starsLength; ++i) stars[i].className = starClassInactive;
+         }
+      };
+   });
+   }
+
+   rating(ratingStars);
