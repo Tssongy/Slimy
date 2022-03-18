@@ -118,7 +118,7 @@ function renderMovieDetail(imdbId) {
             <section class="error"></section>
             <input type="text" name="comment">
           </fieldset>
-          <button>Submit</button>
+          <button class="button-56" role="button">Submit</button>
         </form>
       `;
     document.querySelector(".movies-default").innerHTML = movieDetail;
